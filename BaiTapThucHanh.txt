@@ -1,0 +1,36 @@
+// BaiTap1
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string TenHost = Dns.GetHostName();
+            Console.WriteLine("Ten Host la : " + TenHost);
+
+            // Find host by name
+            IPHostEntry iphostentry = Dns.GetHostEntry(TenHost);
+
+            // Enumerate IP addresses
+            int nIP = 0;
+            foreach (IPAddress ipaddress in iphostentry.AddressList)
+            {
+                Console.WriteLine("Dia chi IP " + ++nIP + " la : " +
+                                  ipaddress.ToString());
+            }
+        }
+    }
+//BaiTap2
+namespace BaiTap2_Buoi1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Nhap ten Host can phan giai: ");
+            string TenHost = Console.ReadLine();
+
+            IPHostEntry e = Dns.GetHostEntry(TenHost);
+            Console.WriteLine(" Ten Host vua nhap la : {0}", e.HostName);
+            foreach (IPAddress i in e.AddressList) Console.WriteLine("Dia chi IP tuong ung la: {0}", i);
+        }
+    }
+}
